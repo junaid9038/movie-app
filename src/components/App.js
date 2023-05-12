@@ -2,6 +2,7 @@ import React from "react";
 import { data } from "../data"; // remove data - get data from store
 import Navbar from "./Navbar";
 import MovieCard from "./MovieCard";
+import { addMovies } from "../action";
 
 class App extends React.Component {
 
@@ -13,10 +14,12 @@ class App extends React.Component {
     })
     //make call 
     //dispatch action
-    store.dispatch({
-      type :'ADD_MOVIES',
-      movies:data
-    });
+
+    // store.dispatch({
+    //   type :'ADD_MOVIES',
+    //   movies:data
+    // });
+    store.dispatch(addMovies(data));
 
     console.log('STATE',this.props.store.getState());
   }
