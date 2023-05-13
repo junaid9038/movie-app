@@ -5,9 +5,9 @@ const initialMoviesState = {
     favourites:[],
     showFavourites:false
 
-}
+};
 
-export default function movies(state= initialMoviesState ,action){
+export  function movies(state= initialMoviesState ,action){
 //   if(action.type === ADD_MOVIES){// generaly react comunity not want to use if else 
 //     return {
 //         ...state,
@@ -15,6 +15,8 @@ export default function movies(state= initialMoviesState ,action){
 //     }
 //   }
 //   return state;
+console.log('MOVIES_REDUCER');
+
 switch (action.type){
     case ADD_MOVIES :
         return {
@@ -45,4 +47,28 @@ switch (action.type){
         return state;
 }
 }
+
+const initialSearchState = {
+     result:{}
+};
+
+export function search (state = initialSearchState,action){
+    console.log('SEARCH_REDUCER');
+
+    return state;
+}
+
+// root reducer 
+
+const intialRootState ={
+    movies:initialMoviesState,
+    search:initialSearchState
+}
+
+export default function roodReducer(state = intialRootState ,action){
+    return{
+        movies:movies(state.movies,action),
+        search:search(state.search,action)
+    }
+} 
 
